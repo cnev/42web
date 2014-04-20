@@ -5,8 +5,7 @@
 	<meta charset="UTF-8">
 </head>
 
-
 <body>
-	Error 404 Not Found !
+	Wrecked. <a href="?controller=home&method=logout">Click here to logout then log as an admin !</a>
 </body>
 </html>

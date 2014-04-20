@@ -8,7 +8,7 @@
 
 <body>
 	<div id="login_form">
-		<form action="???" method="POST">
+		<form action="?controller=login&method=auth" method="POST">
 			<table>
 				<tr>
 					<td colspan=2>Veuillez vous connecter</td>
@@ -20,6 +20,9 @@
 				<tr>
 					<td>Votre mot de passe</td>
 					<td><input type="password" name="pw" value="<?php echo $memo_pw?>"/></td>
+				</tr>
+				<tr>
+					<td colspan=2><input type="submit" name="submit" value="ok" /></td>
 				</tr>
 			</table>
 		</form>

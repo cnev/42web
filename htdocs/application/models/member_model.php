@@ -1,6 +1,6 @@
 <?php
 
-class Home_model extends Model
+class Member_model extends Model
 {
 	public function __construct()
 	{
@@ -29,16 +29,8 @@ class Home_model extends Model
 	}
 	public function header_nav()
 	{
-		if (!isset($_SESSION['uid']) || $_SESSION['uid'] == 0)
-		{
-			$str = '<div id="nav_buttons"><ul><li><button><a href="?controller=login&method=login">Connexion</a></button></li>
-				<li><button><a href="?controller=login&method=signin">Inscription</a></button></li></div>';
-		}
-		else
-		{
-			$str = '<div>Bienvenue !</div>
-				<div>Déconnexion</div>';
-		}
+		$str = '<div>Welcome !</div>
+			<div><a href="?controller=home&method=logout">Logout</a></div>';
 		return ($str);
 	}
 }

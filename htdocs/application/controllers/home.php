@@ -1,5 +1,4 @@
 <?php
-
 class Home extends Controller
 {
 	public function __construct()
@@ -14,14 +13,17 @@ class Home extends Controller
 	{
 		//if(!$this->example_auth->test_authenticate())
 		//	die("You are not authenticated to view the page! :(");
-		if (!$this->auth->is_logged())
-			$data['header_nav'] = $this->home_model->header_nav(FALSE);
+		if (isset($_SESSION['uid']))
+			$this->logout();
 		else
-			$data['header_nav'] = $this->home_model->header_nav(TRUE);
-		$data['date']  = $this->home_model->get_date();
-		$data['title'] = "Home";
-		$data['header_nav'] = $this->home_model->header_nav();
-		$this->load->viewFile("home", $data);
+		{
+			$data['header_nav'] = $this->home_model->header_nav();
+			$data['date']  = $this->home_model->get_date();
+			$data['title'] = "Home Page";
+			$data['header_nav'] = $this->home_model->header_nav();
+			$this->load->viewFile("home", $data);
+		}
+
 	}
 	public function login()
 	{
@@ -29,5 +31,11 @@ class Home extends Controller
 		$data['memo_login'] = "";
 		$data['memo_pw'] = "";
 		$this->load->viewFile("login", $data);
+	}
+	public function logout()
+	{
+		$_SESSION = array();
+		session_destroy();
+		$this->index();
 	}
 }
